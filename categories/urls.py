@@ -3,5 +3,8 @@ from . import views
 
 # list of all urls
 urlpatterns = [
-    path('beauty', views.index), # Url Config
+    # Url Config
+    # dynamic path segments
+    path("<category>", views.categories),
+
 ]
