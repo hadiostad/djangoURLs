@@ -5,6 +5,8 @@ from . import views
 urlpatterns = [
     # Url Config
     # dynamic path segments
-    path("<category>", views.categories),
+    path("<int:category>", views.categories_int),
+    path("<str:category>", views.categories),
+
 
 ]

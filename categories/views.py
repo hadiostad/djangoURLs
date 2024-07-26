@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound
 
 
+
 def categories(request, category):
     page_text = None
     if category == "beauty":
@@ -13,3 +14,8 @@ def categories(request, category):
     else:
         return HttpResponseNotFound("This Category Invalid")
     return HttpResponse(page_text)
+
+
+def categories_int(request, category):
+    return HttpResponse(category)
+
