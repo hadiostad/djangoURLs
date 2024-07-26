@@ -6,7 +6,7 @@ urlpatterns = [
     # Url Config
     # dynamic path segments
     path("<int:category>", views.categories_int),
-    path("<str:category>", views.categories),
+    path("<str:category>", views.category_views)
 
 
 ]
