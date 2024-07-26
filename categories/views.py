@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 
 
-categories = {
+category_list = {
     "beauty": "Beauty Category",
     "food": "Food Category",
     "music": "Music Category",
@@ -14,9 +14,19 @@ categories = {
 
 
 def category_views(request, category):
-    page_text = categories[category]
-    return HttpResponse(page_text)
+    try:
+        page_text = category_list[category]
+        return HttpResponse(page_text)
+    except:
+        return HttpResponseNotFound("Invalid Category")
 
 
-def categories_int(request, category):
-    return HttpResponse(category)
+# Redirect Category by ID
+def categories_id(request, category):
+    category_id = list(category_list.keys())  # Convert Dictionary to List
+
+    if category > len(category_id):
+        return HttpResponseNotFound("Invalid Category")
+
+    redirect_category = category_id[category - 1]
+    return HttpResponseRedirect("/categories/" + redirect_category)
