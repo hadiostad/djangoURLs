@@ -14,10 +14,23 @@ category_list = {
 }
 
 
+def index(request):
+    list_item = ""
+    category_item = list(category_list.keys())  # convert dictionary to list
+
+    for category in category_item:
+        category_path = reverse("category_name", args=[category])
+        list_item += f"<li><a href=\"{category_path}\">{category}</a></li>"
+
+    response_data = f"<ol>{list_item}</ol>"
+    return HttpResponse(response_data)
+
+
 def category_views(request, category):
     try:
         page_text = category_list[category]
-        return HttpResponse(page_text)
+        response_data = f"<h1>{page_text}</h1>"
+        return HttpResponse(response_data)
     except:
         return HttpResponseNotFound("Invalid Category")
 
