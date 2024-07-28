@@ -30,7 +30,7 @@ def category_views(request, category):
     try:
         category_description = category_list[category]
         return render(request, "categories/category.html", {
-            "category_name": category.capitalize(),
+            "category_name": category,
             "category_description": category_description,
 
         })
