@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
-
+from django.template.loader import render_to_string
 
 category_list = {
     "beauty": "Beauty Category",
@@ -29,7 +29,7 @@ def index(request):
 def category_views(request, category):
     try:
         page_text = category_list[category]
-        response_data = f"<h1>{page_text}</h1>"
+        response_data = render_to_string("categories/category.html")
         return HttpResponse(response_data)
     except:
         return HttpResponseNotFound("Invalid Category")
