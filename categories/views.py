@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
-from django.template.loader import render_to_string
 
 category_list = {
     "beauty": "Beauty Category",
@@ -15,15 +14,11 @@ category_list = {
 
 
 def index(request):
-    list_item = ""
     category_item = list(category_list.keys())  # convert dictionary to list
 
-    for category in category_item:
-        category_path = reverse("category_name", args=[category])
-        list_item += f"<li><a href=\"{category_path}\">{category}</a></li>"
-
-    response_data = f"<ol>{list_item}</ol>"
-    return HttpResponse(response_data)
+    return render(request, "categories/index.html", {
+        "category_item": category_item
+    })
 
 
 def category_views(request, category):
