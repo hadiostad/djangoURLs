@@ -29,7 +29,9 @@ def index(request):
 def category_views(request, category):
     try:
         page_text = category_list[category]
-        return render(request, "categories/category.html")
+        return render(request, "categories/category.html", {
+            "category_data": page_text
+        })
     except:
         return HttpResponseNotFound("Invalid Category")
 
