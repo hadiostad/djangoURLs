@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.http import Http404, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
 
 category_list = {
@@ -30,7 +30,7 @@ def category_views(request, category):
 
         })
     except:
-        return HttpResponseNotFound("Invalid Category")
+        raise Http404()
 
 
 # Redirect Category by ID
