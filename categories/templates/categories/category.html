@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block category_content %}
+    {% include "categories/includes/header.html" %}
     <h1>{{ category_name|title }}</h1>
     {% if category_description is Non %}
         <h2>This Category Is Not Available</h2>
