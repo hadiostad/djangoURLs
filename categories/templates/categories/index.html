@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>category list</title>
-</head>
-<body>
-<ul>
-    {% for category in category_item %}
-        <li><a href="{% url 'category_name' category %}">{{ category|title }}</a></li>
-    {% endfor %}
-</ul>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}
+    Categories
+{% endblock %}
+
+{% block category_content %}
+    <ul>
+        {% for category in category_content %}
+            <li><a href="{% url 'category_name' category %}">{{ category|title }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
