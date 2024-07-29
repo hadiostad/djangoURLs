@@ -4,7 +4,7 @@
     Categories
 {% endblock %}
 
-{% block category_content %}
+{% block content %}
     <ul>
         {% for category in category_item %}
             <li><a href="{% url 'category_name' category %}">{{ category|title }}</a></li>
