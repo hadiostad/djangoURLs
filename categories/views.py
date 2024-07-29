@@ -29,7 +29,7 @@ def category_views(request, category):
             "category_description": category_description,
 
         })
-    except:
+    except Exception:
         raise Http404()
 
 
