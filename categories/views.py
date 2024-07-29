@@ -4,7 +4,7 @@ from django.urls import reverse
 
 category_list = {
     "beauty": "Beauty Category",
-    "food": "Food Category",
+    "food": None,
     "music": "Music Category",
     "science": "Science Category",
     "sports": "Sports Category",
