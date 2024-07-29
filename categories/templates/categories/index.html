@@ -2,7 +2,8 @@
 {% load static %}
 
 {% block css_file %}
-    <link rel="stylesheet" href="{% static "categories/categories.css" %}">
+    <link rel="stylesheet" href="{% static "categories/index.css" %}">
+    <link rel="stylesheet" href="{% static "categories/includes/header.css" %}">
 {% endblock %}
 
 {% block title %}
@@ -10,9 +11,19 @@
 {% endblock %}
 
 {% block content %}
-    <ul>
-        {% for category in category_item %}
-            <li><a href="{% url 'category_name' category %}">{{ category|title }}</a></li>
-        {% endfor %}
-    </ul>
+    {% include "categories/includes/header.html" %}
+    <div class="ag-format-container">
+        <div class="ag-courses_box">
+            {% for category in category_item %}
+                <div class="ag-courses_item">
+                    <a href="{% url 'category_name' category %}" class="ag-courses-item_link">
+                        <div class="ag-courses-item_bg"></div>
+                        <div class="ag-courses-item_title">
+                            {{ category|title }}
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

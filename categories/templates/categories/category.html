@@ -1,4 +1,10 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block css_file %}
+    <link rel="stylesheet" href="{% static "categories/category.css" %}">
+    <link rel="stylesheet" href="{% static "categories/includes/header.css" %}">
+{% endblock %}
 
 {% block title %}
     {{ category_name|title }}
